@@ -1,0 +1,98 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="pradip (generated)" id="1563878809373-1">
+        <createTable tableName="ACCOUNT_DETAIL">
+            <column name="ID" type="VARCHAR2(36 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACCOUNT_NUMBER" type="VARCHAR2(25 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACCOUNT_HOLDER_NAME" type="VARCHAR2(50 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="BALANCE" type="NUMBER"/>
+            <column name="CREATED_DATE" type="TIMESTAMP(6)"/>
+            <column name="UPDATED_DATE" type="TIMESTAMP(6)"/>
+            <column defaultValueNumeric="0" name="VERSION" type="NUMBER"/>
+            <column name="PHONE_NUMBER" type="VARCHAR2(15 BYTE)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="pradip (generated)" id="1563878809373-2">
+        <createTable tableName="TRANSACTION_DETAIL">
+            <column name="ID" type="VARCHAR2(36 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TRANSACTION_TYPE" type="VARCHAR2(2 BYTE)"/>
+            <column name="REMARKS" type="VARCHAR2(200 BYTE)"/>
+            <column defaultValueNumeric="0" name="AMOUNT" type="NUMBER"/>
+            <column name="CREATED_DATE" type="TIMESTAMP(6)"/>
+            <column name="ACCOUNT_DETAIL_ID" type="VARCHAR2(36 BYTE)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="pradip (generated)" id="1563878809373-3">
+        <createIndex indexName="PK_ACCOUNT_DETAIL" tableName="ACCOUNT_DETAIL" unique="true">
+            <column name="ID"/>
+        </createIndex>
+        <addPrimaryKey columnNames="ID" constraintName="PK_ACCOUNT_DETAIL" forIndexName="PK_ACCOUNT_DETAIL" tableName="ACCOUNT_DETAIL"/>
+    </changeSet>
+    <changeSet author="pradip (generated)" id="1563878809373-4">
+        <createIndex indexName="PK_TRANSACTION_DETAIL" tableName="TRANSACTION_DETAIL" unique="true">
+            <column name="ID"/>
+        </createIndex>
+        <addPrimaryKey columnNames="ID" constraintName="PK_TRANSACTION_DETAIL" forIndexName="PK_TRANSACTION_DETAIL" tableName="TRANSACTION_DETAIL"/>
+    </changeSet>
+    <changeSet author="pradip (generated)" id="1563878809373-5">
+        <createIndex indexName="ACCOUNT_NUMBER_UN" tableName="ACCOUNT_DETAIL" unique="true">
+            <column name="ACCOUNT_NUMBER"/>
+        </createIndex>
+        <addUniqueConstraint columnNames="ACCOUNT_NUMBER" constraintName="ACCOUNT_NUMBER_UN" forIndexName="ACCOUNT_NUMBER_UN" tableName="ACCOUNT_DETAIL"/>
+    </changeSet>
+    <changeSet author="pradip (generated)" id="1563878809373-6">
+        <addForeignKeyConstraint baseColumnNames="ACCOUNT_DETAIL_ID" baseTableName="TRANSACTION_DETAIL" constraintName="ACCOUNT_DETAIL_ID_FK" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="ID" referencedTableName="ACCOUNT_DETAIL"/>
+    </changeSet>
+    <changeSet author="pradip (generated)" id="1563878864061-1">
+        <insert tableName="ACCOUNT_DETAIL">
+            <column name="ID" value="08066634E45B4514A65D302B21656A3C"/>
+            <column name="ACCOUNT_NUMBER" value="ACC-1234567"/>
+            <column name="ACCOUNT_HOLDER_NAME" value="Pradip Rimal"/>
+            <column name="BALANCE" valueNumeric="10000"/>
+            <column name="CREATED_DATE" valueDate="2019-07-23 09:42:43.0"/>
+            <column name="UPDATED_DATE"/>
+            <column name="VERSION" valueNumeric="0"/>
+            <column name="PHONE_NUMBER"/>
+        </insert>
+        <insert tableName="ACCOUNT_DETAIL">
+            <column name="ID" value="0EBCD2FD9601486A957195B77012F3CF"/>
+            <column name="ACCOUNT_NUMBER" value="ACC-123456723"/>
+            <column name="ACCOUNT_HOLDER_NAME" value="Gopal Hamal"/>
+            <column name="BALANCE" valueNumeric="20000"/>
+            <column name="CREATED_DATE" valueDate="2019-07-23 09:42:43.0"/>
+            <column name="UPDATED_DATE"/>
+            <column name="VERSION" valueNumeric="0"/>
+            <column name="PHONE_NUMBER"/>
+        </insert>
+        <insert tableName="ACCOUNT_DETAIL">
+            <column name="ID" value="33B79C22C384456694F1F31045E74382"/>
+            <column name="ACCOUNT_NUMBER" value="ACC-1234002"/>
+            <column name="ACCOUNT_HOLDER_NAME" value="Dan Rj"/>
+            <column name="BALANCE" valueNumeric="130000"/>
+            <column name="CREATED_DATE" valueDate="2019-07-23 09:42:43.0"/>
+            <column name="UPDATED_DATE"/>
+            <column name="VERSION" valueNumeric="0"/>
+            <column name="PHONE_NUMBER"/>
+        </insert>
+        <insert tableName="ACCOUNT_DETAIL">
+            <column name="ID" value="9D3A001EA06F4EDDAFAEAF1ED515F061"/>
+            <column name="ACCOUNT_NUMBER" value="ACC-1224567"/>
+            <column name="ACCOUNT_HOLDER_NAME" value="Jacob Rc"/>
+            <column name="BALANCE" valueNumeric="12000"/>
+            <column name="CREATED_DATE" valueDate="2019-07-23 09:42:43.0"/>
+            <column name="UPDATED_DATE"/>
+            <column name="VERSION" valueNumeric="0"/>
+            <column name="PHONE_NUMBER"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
