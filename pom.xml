@@ -8,7 +8,7 @@
     <artifactId>liquibase-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <liquibase.core.version>3.6.2</liquibase.core.version>
+        <liquibase.core.version>4.8.0</liquibase.core.version>
         <liquibase.plugin.version>3.5.3</liquibase.plugin.version>
         <oracle.jdbc.version>11.2.0.3.0</oracle.jdbc.version>
     </properties>
